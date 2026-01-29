@@ -7,26 +7,57 @@ import background2 from '/assets/731_2019teampic.webp';
 import background3 from '/assets/731_2024bot.webp';
 import blank from '/assets/blank.jpg';
 import mentor1 from '/assets/mentors/kevalshah.jpg';
-import mentor2 from '/assets/mentors/kevinlimanto.jpg';
+import mentor2 from '/assets/mentors/don.png';
 import mentor3 from '/assets/mentors/timothyvo.jpg';
-import mentor4 from '/assets/mentors/zeelpatel.jpg';
+import mentor4 from '/assets/mentors/srikanth.png';
 import mentor5 from '/assets/mentors/arihantsingh.jpg';
 import mentor6 from '/assets/mentors/lakshayamehta.jpg';
-import patra from '/assets/FTC731/patra.jpg';
-import teja from '/assets/FTC731/teja.jpg';
-import nikunj from '/assets/FTC731/nikunj.jpg';
-import anika from '/assets/FTC731/anika.jpg';
+import mentor7 from '/assets/mentors/antonio.png';
+import mentor8 from '/assets/mentors/ken.png';
+import patra from '/assets/FTC731/patra.png';
+import luna from '/assets/FTC731/luna.png';
+import divit from '/assets/FTC731/divit.png';
+import dev from '/assets/FTC731/dev.png';
+import jimmy from '/assets/FTC731/jimmy.png';
+import joel from '/assets/FTC731/jojo.png';
+import aiden from '/assets/FTC731/aiden.png';
+import teja from '/assets/FTC731/teja.png';
+import nikunj from '/assets/FTC731/nikunj.png';
+import anika from '/assets/FTC731/anika.png';
 import noah from '/assets/FTC731/noah.png';
 import jason from '/assets/FTC731/jason.png';
-import divit from '/assets/FTC731/divit.png';
-import alexw from '/assets/FTC731/alexw.jpg';
-import alexc from '/assets/FTC731/alexc.jpg';
+import alexw from '/assets/FTC731/alexw.png';
+import alexc from '/assets/FTC731/alexc.png';
 import outreach1 from '/assets/FTC731/outreach1.jpg';
 import outreach2 from '/assets/FTC731/outreach2.jpg';
 import outreach3 from '/assets/FTC731/outreach3.jpg';
 import outreach4 from '/assets/FTC731/outreach4.jpg';
-import teamLogo from '/assets/FTC731/logo.jpg';
-import teamPhoto from '/assets/FTC731/blankteamphoto.jpg';
+import teamLogo from '/assets/FTC731/logo.png';
+import teamPhoto from '/assets/FTC731/teampic.png';
+import fivewkcomp from '/assets/FTC731/5wkcomp.jpeg';
+import roborama1 from '/assets/FTC731/roborama1.jpeg';
+import roborama2 from '/assets/FTC731/roborama2.jpeg';
+import roborama3 from '/assets/FTC731/roborama3.jpeg';
+import cubscout from '/assets/FTC731/cubscout.jpeg';
+import aggieacademy1 from '/assets/FTC731/aggieacademy.jpeg';
+import aggieacademy2 from '/assets/FTC731/aggieacademy2.jpeg';
+import cubscout2 from '/assets/FTC731/cubscout2.jpeg';
+import kickoff from '/assets/FTC731/kickoff.jpeg';
+import uWay from '/assets/FTC731/logos/uWay.png';
+import HT from '/assets/FTC731/logos/ht.png';
+import publix from '/assets/FTC731/logos/publix.png';
+import GDT from '/assets/FTC731/logos/gdt.png';
+import qorvo from '/assets/FTC731/logos/qorvo.png';
+import cotality from '/assets/FTC731/logos/cotality.png';
+import intuitive from '/assets/FTC731/logos/intuitive.png';
+import adevices from '/assets/FTC731/logos/adevices.png';
+import tsf from '/assets/FTC731/logos/tsf.png';
+import te from '/assets/FTC731/logos/te.png';
+import haas from '/assets/FTC731/logos/haas.png';
+import pg from '/assets/FTC731/logos/pg.png';
+import ifgiorg from '/assets/FTC731/logos/ifgiorg.png';
+import honda from '/assets/FTC731/logos/honda.png';
+
 
 const TeamPage731 = () => {
     const teamContainerRef = useRef(null);
@@ -54,36 +85,95 @@ const TeamPage731 = () => {
         };
     }, []);
 
+    const getTierColor = (tier) => {
+        const tierColors = {
+            "Bronze": "#CD7F32",
+            "Silver": "silver",
+            "Gold": "gold",
+            "Platinum": "#E5E4E2",
+            "Diamond": "#B9F2FF",
+            "Strange": "orange"
+        };
+        return tierColors[tier] || "transparent";
+    };
+
     const teamMembers = [
         { id: 1, name: "Ishan Mahapatra", role: "Team Captain - Mechanical/Marketing Lead", img: patra, isCaptain: true },
         { id: 2, name: "Nikunj Gupta", role: "Co-Captain - Programming/Mechanical Lead", img: nikunj },
         { id: 10, name: "Jason Nguyen", role: "Lead Programming", img: jason },
-        { id: 9, name: "Jimmy Ma", role: "Programming", img: blank },
+        { id: 9, name: "Jimmy Ma", role: "Programming", img: jimmy },
         { id: 5, name: "Alex Wang", role: "Programming", img: alexw },
         { id: 3, name: "Teja Chitta", role: "Mechanical", img: teja },
         { id: 4, name: "Alex Chen", role: "Mechanical", img: alexc },
         { id: 6, name: "Anika Nayanar", role: "Marketing/Programming", img: anika },
         { id: 7, name: "Noah King", role: "Marketing", img: noah },
-        { id: 8, name: "Dev Patel", role: "Mechanical/Outreach", img: blank },
-        { id: 11, name: "Divit Rao", role: "Marketing", img: divit }
+        { id: 8, name: "Dev Patel", role: "Mechanical/Outreach", img: dev },
+        { id: 11, name: "Divit Rao", role: "Marketing", img: divit },
+        {id: 12, name: "Joel Sekyama", role: "Programming", img: joel },
+        {id: 13, name: "Aiden Bell", role: "Mechanical", img: aiden },
+        {id: 14, name: "Luna Smith Yanez", role: "Marketing/Outreach", img: luna },
     ];
 
     const mentors = [
-        { id: 1, name: "Keval Shah", role: "Programming Mentor", img: mentor1, bio: "Current Computer Science student at UT Dallas.", isCaptain: true },
-        { id: 2, name: "Kevin Limanto", role: "Engineering Mentor", img: mentor2, bio: "Current Robotics Engineer at Mack Trucks." },
+        { id: 1, name: "Keval Shah", role: "Programming Mentor", img: mentor1, bio: "Current Computer Science student at UT Dallas."},
+        { id: 2, name: "Don Smith", role: "Physics Mentor", img: mentor2, bio: "Physics Professor @ Guilford College." },
         { id: 3, name: "Timothy Vo", role: "Engineering Mentor", img: mentor3, bio: "Current Mechanical Engineering student at NC state University." },
-        { id: 4, name: "Zeel Patel", role: "Cadding and Design Mentor", img: mentor4, bio: "Former Volvo Intern, soon to be a Honda Jet Intern, and an aerospace engineering major from NC State University." },
+        { id: 4, name: "Srikanth Kagollu", role: "Engineering Mentor", img: mentor4, bio: "Lead Project Engineer @ Labcorp" },
         { id: 5, name: "Arihant Singh", role: "Programming Mentor", img: mentor5, bio: "Current Computer Engineering student at Duke University." },
-        { id: 6, name: "Lakshaya Mehta", role: "Engineering Mentor", img: mentor6, bio: "Current Mechanical Engineering at Georgia Tech University." },
-        { id: 7, name: "Aparna Tata", role: "Electrical Engineering Mentor", img: blank, bio: "Current Senior Electrical Engineer at Analog Devices Inc. with over 15 years of experience." },
-        { id: 8, name: "Shiv Oza", role: "Design Mentor", img: blank, bio: "Currently working at SpaceX" },
-        { id: 9, name: "Aarushi Ahuja", role: "Outreach Mentor", img: blank, bio: "Graduate from Stanford University." },
+        { id: 6, name: "Lakshya Mehta", role: "Engineering Mentor", img: mentor6, bio: "Current Mechanical Engineering at Georgia Tech University." },
+        { id: 7, name: "Antonio DesRavines", role: "Programming Mentor", img: mentor7, bio: "Computer Science Teaching Assistant @ NC A&T University." },
+        { id: 8, name: "Ken Gilmore", role: "Management Mentor", img: mentor8, bio: "Political Science Professor @ Guilford College" },
     ];
 
+    const sponsors = [
+        { id: 1, name: "United Way", logo: uWay, tier: "Bronze"},
+        { id: 2, name: "Harris Teeter", logo: HT, tier: "Bronze"},
+        { id: 3, name: "Publix", logo: publix, tier: "Bronze"},
+        { id: 4, name: "GDT", logo: GDT, tier: "Bronze"},
+        { id: 5, name: "QORVO", logo: qorvo, tier: "Silver"},
+        { id: 6, name: "cotality", logo: cotality, tier: "Silver"},
+        { id: 7, name: "INTUITIVE", logo: intuitive, tier: "Silver"},
+        { id: 8, name: "Analog Devices", logo: adevices, tier: "Gold"},
+        { id: 9, name: "Tannenbaum Sternberger Foundation", logo: tsf, tier: "Gold"},
+        { id: 10, name: "TE Connectivity", logo: te, tier: "Gold"},
+        { id: 11, name: "HAAS", logo: haas, tier: "Platinum"},
+        { id: 12, name: "Proctor & Gamble", logo: pg, tier: "Diamond"},
+        { id: 13, name: "Inventions for Good, Inc", logo: ifgiorg, tier: "Strange"},
+        { id: 14, name: "Honda", logo: honda, tier: "Strange"}
+    ]
+
     const galleryImages = {
-        outreach: [outreach1, outreach2, outreach3, outreach4],
-        mentorship: [mentor1, mentor2, mentor3, mentor4, mentor5, mentor6],
-        media: [outreach1, outreach2, outreach3, outreach4, mentor1, mentor2, mentor3, mentor4, mentor5, mentor6]
+        outreach: ["fivewkcomp", "roborama1", "roborama2", "roborama3", "cubscout", "aggieacademy1", "aggieacademy2", "cubscout2", "kickoff"]
+    };
+
+    const getgalleryCaptions = (image) => {
+        const galleryCaptions = {
+            fivewkcomp: "Fig.1 - Robot in 5 Weeks Competition",
+            roborama1: "Fig.2 - Roborama Presentation at GSC",
+            roborama2: "Fig.3 - Roborama Presentation at GSC",
+            roborama3: "Fig.4 - Roborama Presentation at GSC",
+            cubscout: "Fig.5 - Cub Scout Outreach",
+            aggieacademy1: "Fig.6 - Aggie Academy Outreach",
+            aggieacademy2: "Fig.7 - Aggie Academy Outreach",
+            cubscout2: "Fig.8 - Cub Scout Outreach",
+            kickoff: "Fig.9 - Kickoff Event"
+        };
+        return galleryCaptions[image] || "No caption available";
+    };
+
+    const getgalleryImg = (image) => {
+        const galleryImages = {
+            fivewkcomp: fivewkcomp,
+            roborama1: roborama1,
+            roborama2: roborama2,
+            roborama3: roborama3,
+            cubscout: cubscout,
+            aggieacademy1: aggieacademy1,
+            aggieacademy2: aggieacademy2,
+            cubscout2: cubscout2,
+            kickoff: kickoff
+        };
+        return galleryImages[image] || "No image available";
     };
 
     return (
@@ -109,7 +199,7 @@ const TeamPage731 = () => {
 
                 {/* Social Links */}
                 <div className="team731-social-links">
-                    <a href="https://youtube.com/FTC731" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.youtube.com/@ftc7312" target="_blank" rel="noopener noreferrer">
                         <img src={youtubeLogo} alt="YouTube" />
                     </a>
                     <a href="https://www.instagram.com/wannabeestrange/" target="_blank" rel="noopener noreferrer">
@@ -126,8 +216,7 @@ const TeamPage731 = () => {
                             className="team731-team-image"
                         />
                         <div className="team731-team-photo-caption">
-                            <h2>Our Team</h2>
-                            <p>FTC 731 - Wannabee Strange (2024-2025 Season)</p>
+                            <p>FTC 731 - Wannabee Strange (2025-2026 DECODE<sup>©</sup> Season)</p>
                         </div>
                     </div>
                 </section>
@@ -135,7 +224,10 @@ const TeamPage731 = () => {
                 {/* Overview Section */}
                 <section className="team731-section team731-overview">
                     <h2>Overview</h2>
-                    <p>Welcome to FTC 731, Wannabee Strange. We're an innovative robotics team pushing the boundaries of STEM education through competition and community outreach.</p>
+                    <p>
+                    FTC Team 731 Wannabee Strange is a 22-year veteran team based in Greensboro, NC. We are one of four FTC teams in the ECG Robotics Organization, with 14 members from across the Triad area. We actively uphold our team values of innovation (being 'strange') and teamwork (Bees of a colony). <br />
+                    Wannabee Strange is entirely student-led, with captains and division leads managing finances, logistics, bot duties, tasks, projects, and goals. This structure helps members develop valuable skills beyond robotics, including communication and productivity.
+                    </p>
                 </section>
 
                 {/* Team Members Section */}
@@ -224,6 +316,25 @@ const TeamPage731 = () => {
                     </div>
                 </section>
 
+                {/* Sponsors Section */}
+                <section className="team731-section team731-sponsors">
+                    <h2>Our Sponsors</h2>
+                    <div className="team731-sponsors-grid">
+                        {sponsors.map(sponsor => (
+                            <div key={sponsor.id} className="team731-sponsor-card" data-tier={sponsor.tier}>
+                                <img
+                                    src={sponsor.logo}
+                                    alt={sponsor.name}
+                                    className="team731-sponsor-logo"
+                                    style={{ boxShadow: '0 0 15px ' + getTierColor(sponsor.tier), border: '2px solid ' + getTierColor(sponsor.tier) }}
+                                />
+                                <h2>{sponsor.name}</h2>
+                                <p className="team731-sponsor-tier" style={{color:getTierColor(sponsor.tier), textShadow: '0 0 5px ' + getTierColor(sponsor.tier)}}>{sponsor.tier} Tier</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 {/* Outreach Section */}
                 <section className="team731-section team731-outreach">
                     <h2>Community Outreach</h2>
@@ -273,6 +384,35 @@ const TeamPage731 = () => {
                                 <p>Through this event we reached over a thousand people and introduced over 50 students to FIRST Robotics. </p>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                {/* Gallery Section */}
+                <section className="team731-section team731-gallery">
+                    <h2>Gallery</h2>
+                    <div className="team731-gallery-grid">
+                        {Object.entries(galleryImages).map(([albumName, images]) => (
+                            <div key={albumName} className="team731-gallery-album">
+                                <table className="team731-gallery-table">
+                                    <tbody>
+                                        {Array.from({ length: Math.ceil(images.length / 3) }).map((_, rowIndex) => (
+                                            <tr key={rowIndex}>
+                                                {images.slice(rowIndex * 3, rowIndex * 3 + 3).map((image, colIndex) => (
+                                                    <td key={colIndex} className="team731-gallery-cell">
+                                                        <img
+                                                            src={getgalleryImg(image)}
+                                                            alt={`${albumName} ${rowIndex * 3 + colIndex + 1}`}
+                                                            className="team731-gallery-image"
+                                                        />
+                                                        <figcaption>{getgalleryCaptions(image)}</figcaption>
+                                                    </td>
+                                                ))}
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ))}
                     </div>
                 </section>
             </div>
