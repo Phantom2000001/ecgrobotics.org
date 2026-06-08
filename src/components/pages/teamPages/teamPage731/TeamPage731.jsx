@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './TeamPage731.css';
+import { startLogoAnimation } from './logoRotate';
 import youtubeLogo from '/assets/YoutubeLogo.webp';
 import instagramLogo from '/assets/InstagramLogo.webp';
 import background1 from '/assets/731_2024bot.webp';
@@ -56,8 +57,7 @@ import te from '/assets/FTC731/logos/te.png';
 import haas from '/assets/FTC731/logos/haas.png';
 import pg from '/assets/FTC731/logos/pg.png';
 import ifgiorg from '/assets/FTC731/logos/ifgiorg.png';
-import honda from '/assets/FTC731/logos/honda.png';
-
+import honda from '/assets/FTC731/logos/honda.png'; // just the data, no init
 
 const TeamPage731 = () => {
     const teamContainerRef = useRef(null);
@@ -83,6 +83,11 @@ const TeamPage731 = () => {
             document.body.classList.remove('team731-page-body');
             window.removeEventListener('scroll', handleScroll);
         };
+    }, []);
+
+    useEffect(() => {
+        const canvas = document.getElementById("c");
+        startLogoAnimation(canvas);
     }, []);
 
     const getTierColor = (tier) => {
@@ -142,6 +147,17 @@ const TeamPage731 = () => {
         { id: 14, name: "Honda", logo: honda, tier: "Strange"}
     ]
 
+    const strangeClubBenefits = [
+        { id: 1, title: "Online Courses", details: ["Courses tailored to the youth in both Mechanical work and Programming", "Self-paced with over an hour of direct instruction", "Guidance for independent activities"] },
+        { id: 2, title: "Hands-On Experience", details: ["Involvement in team-led outreach events", "Leadership opportunities for students to achieve outreach and community experience"] },
+        { id: 3, title: "Regular Newsletters", details: ["Updates on team activities", "Regular information regarding local STEM events and opportunities", "At-home opportunities to apply crucial robotics skills"] },
+        { id: 4, title: "Facility Tours", details: ["Tours on our organization-wide robotics facility", "Basic instruction on specialized mechanical equipment and everyday operations"] },
+        { id: 5, title: "Member Promotion/Recognition", details: ["Certificates of achievement for online courses", "Mentions on our team web page", "Regular member updates on our social media"] },
+        { id: 6, title: "Open Communication", details: ["Q/A sessions for both members and parents throughout the season", "Responses within 24 hours to meet member needs and provide support", "Tailored information to involve children in STEM at various ages and experience levels"] },
+        { id: 7, title: "Team Merchandise", details: ["Free 731 Wannabee Strange merchandise including shirts, pins, bracelets, and more"] },
+        { id: 8, title: "Competition Invites", details: ["Invites to both scrimmages and seasonal competitions throughout the year", "Opportunities to see the fast-paced functioning of an official First Tech Challenge Competition"] },
+    ];
+
     const galleryImages = {
         outreach: ["fivewkcomp", "roborama1", "roborama2", "roborama3", "cubscout", "aggieacademy1", "aggieacademy2", "cubscout2", "kickoff"]
     };
@@ -188,7 +204,8 @@ const TeamPage731 = () => {
         >
             <div className="team731-container" ref={teamContainerRef}>
                 {/* Unified Title Box */}
-                <div className="team731-title-box-container">
+                <canvas id="c"></canvas>
+                <div id="content" className="team731-title-box-container">
                     <div className="team731-title-box">
                         <h1>FTC 731 - Wannabee Strange</h1>
                     </div>
@@ -196,7 +213,7 @@ const TeamPage731 = () => {
                         <img src={teamLogo} alt="Team 731 Logo" className="team731-logo" />
                     </div>
                 </div>
-
+            
                 {/* Social Links */}
                 <div className="team731-social-links">
                     <a href="https://www.youtube.com/@ftc7312" target="_blank" rel="noopener noreferrer">
@@ -206,6 +223,8 @@ const TeamPage731 = () => {
                         <img src={instagramLogo} alt="Instagram" />
                     </a>
                 </div>
+
+                
 
                 {/* Team Photo Section */}
                 <section className="team731-section team731-team-photo">
@@ -218,6 +237,25 @@ const TeamPage731 = () => {
                         <div className="team731-team-photo-caption">
                             <p>FTC 731 - Wannabee Strange (2025-2026 DECODE<sup>©</sup> Season)</p>
                         </div>
+                    </div>
+                </section>
+
+                <section className="team731-section strange-club">
+                    <h2>STRANGE CLUB</h2>
+                    <p class="team731-section-subtitle">
+                        Presented by FTC Team 731 Wannabee Strange
+                    </p>
+                    <div className="team731-benefits-grid">
+                        {strangeClubBenefits.map(benefit => (
+                            <div key={benefit.id} className="team731-benefit-card">
+                                <h3>{benefit.title}</h3>
+                                <ul>
+                                    {benefit.details.map((detail, index) => (
+                                        <li key={index}>{detail}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </section>
 
