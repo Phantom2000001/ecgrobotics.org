@@ -1,5 +1,5 @@
 import digitCoordinates from './digitCoordinates.json';
-import mentor1 from '/assets/mentors/kevalshah.jpg';
+
 
 class Vector {
     constructor(vector) {

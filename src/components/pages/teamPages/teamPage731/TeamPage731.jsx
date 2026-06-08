@@ -204,7 +204,7 @@ const TeamPage731 = () => {
         >
             <div className="team731-container" ref={teamContainerRef}>
                 {/* Unified Title Box */}
-                <canvas id="c"></canvas>
+                <div id="hero"><canvas id="c"></canvas></div>
                 <div id="content" className="team731-title-box-container">
                     <div className="team731-title-box">
                         <h1>FTC 731 - Wannabee Strange</h1>
