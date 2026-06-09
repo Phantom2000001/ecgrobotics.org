@@ -824,7 +824,7 @@ export function startLogoAnimation(canvas) {
         //     normalizedModel2.push(newVec);
         // });
 
-        
+        particles.velocity = masterRotation.rMultiply(particles.velocity.getTranspose).getTranspose;
         let projected = projMat.rMultiply(new Matrix(normalizedModel).getTranspose);
         let partProj = projMat.rMultiply(new Matrix(normalizedParts).getTranspose)
         projected = projected.getTranspose;
