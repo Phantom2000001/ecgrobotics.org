@@ -481,7 +481,10 @@ export function startLogoAnimation(canvas) {
         {
             for(var j = 0; j < i; j++)
             {
-                if (DistM.getEntry(i, j) <= Math.pow(50, 2))
+                let combinedSpeed = particles.velocity.matrix[i].getNorm + particles.velocity.matrix[j].getNorm;
+                let factorS = 300;
+                let dynamicThreshold = Math.pow(30, 2) + (combinedSpeed * factorS);
+                if (DistM.getEntry(i, j) <= dynamicThreshold)
                 {
                     const x_1 = points2[i].getComp(0) * scale + offsetMult*centerX/Math.PI;
                     const y_1 = points2[i].getComp(1) * -scale + centerY/1;
