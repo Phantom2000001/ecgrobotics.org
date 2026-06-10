@@ -318,7 +318,7 @@ const particles = {
             )
             let distM = new Matrix([new Vector
             (
-                DispM.matrix.map(vect => vect.getNorm > 0 ? 1/Math.pow(vect.getNorm+5, 3) : 1/Infinity)
+                DispM.matrix.map(vect => vect.getNorm > 0 ? 1/Math.pow(vect.getNorm, 3) : 1/Infinity)
             )]);
             let distM2 = new Matrix([new Vector
             (
@@ -749,12 +749,33 @@ export function startLogoAnimation(canvas) {
 
         return { x: btnX, y: btnY, w: btnWidth, h: btnHeight };
     }
+
+    function pacMan(val, min, max)
+    {
+        const range = max - min;
+        return ((val - min) % range + range) % range + min;
+    }
     
     function loop() {
         if (Date.now() - lastMouseMoveTime > 2000) {
             let amount = 0.005*ScreenToWorld.sLerp(clamp(1-((Date.now() - lastMouseMoveTime-2000)/5000), 0, 1));
-            tAngles[0] += amount; 
-            tAngles[1] += amount;
+            angles[0] += amount; 
+            angles[1] += amount;
+            angles[0] = pacMan(angles[0], -Math.PI, Math.PI);
+            angles[1] = pacMan(angles[1], -Math.PI, Math.PI);
+        }
+        else {
+            let diffX = pacMan(tAngles[0]-angles[0], -Math.PI, Math.PI);
+            let diffY = pacMan(tAngles[1]-angles[1], -Math.PI, Math.PI);
+            const responsiveness = 8;
+            // angles[0] += smooth*diffX;
+            // angles[1] += smooth*diffY;
+            // angles[0] += tAngles[0]*smooth*ScreenToWorld.sLerp(clamp(tAngles[0] == 0 ? 0 : angles[0]/(tAngles[0]) , 0, 1));
+            // angles[1] += tAngles[1]*smooth*ScreenToWorld.sLerp(clamp(tAngles[1] == 0 ? 0 : angles[1]/(tAngles[1]), 0, 1));
+            // angles[0] = clamp(angles[0], Math.min(tAngles[0], angles[0]-(Math.sign(diffX)*0.001)), Math.max(tAngles[0], angles[0]-(Math.sign(diffX)*0.001)));
+            // angles[1] = clamp(angles[1], Math.min(tAngles[1], angles[1]-(Math.sign(diffY)*0.001)), Math.max(tAngles[1], angles[1]-(Math.sign(diffY)*0.001)));
+            angles[0] += (diffX) * (1 - Math.exp(-responsiveness * dt));;
+            angles[1] += (diffY) * (1 - Math.exp(-responsiveness * dt));;
         }
 
         if (mousePos[0] >= location.x && mousePos[0] <= location.x + location.w && mousePos[1] >= location.y && mousePos[1] <= location.y + location.h) {
@@ -765,15 +786,7 @@ export function startLogoAnimation(canvas) {
             isHoveringButton = false;
         }
 
-        let diffX = tAngles[0]-angles[0];
-        let diffY = tAngles[1]-angles[1];
         
-        // angles[0] += smooth*diffX;
-        // angles[1] += smooth*diffY;
-        angles[0] += tAngles[0]*smooth*ScreenToWorld.sLerp(clamp(tAngles[0] == 0 ? 0 : angles[0]/(tAngles[0]) , 0, 1));
-        angles[1] += tAngles[1]*smooth*ScreenToWorld.sLerp(clamp(tAngles[1] == 0 ? 0 : angles[1]/(tAngles[1]), 0, 1));
-        angles[0] = clamp(angles[0], Math.min(tAngles[0], angles[0]-(Math.sign(diffX)*0.001)), Math.max(tAngles[0], angles[0]-(Math.sign(diffX)*0.001)));
-        angles[1] = clamp(angles[1], Math.min(tAngles[1], angles[1]-(Math.sign(diffY)*0.001)), Math.max(tAngles[1], angles[1]-(Math.sign(diffY)*0.001)));
 
         //console.log(angles[0]);
         let masterRotation = rMaty(-angles[0]).rMultiply(rMatx(angles[1]));
@@ -824,7 +837,7 @@ export function startLogoAnimation(canvas) {
         //     normalizedModel2.push(newVec);
         // });
 
-        particles.velocity = masterRotation.rMultiply(particles.velocity.getTranspose).getTranspose;
+        
         let projected = projMat.rMultiply(new Matrix(normalizedModel).getTranspose);
         let partProj = projMat.rMultiply(new Matrix(normalizedParts).getTranspose)
         projected = projected.getTranspose;
@@ -847,6 +860,7 @@ export function startLogoAnimation(canvas) {
         ctx.globalCompositeOperation = "source-over";
         particles.updateAcceleration();
         particles.updateVelocity(dt);
+        //particles.velocity = masterRotation.rMultiply(particles.velocity.getTranspose).getTranspose;
         particles.updatePosition(dt, canvas);
         if (isHoveringButton) {
             hoverIntensity += 0.1; 

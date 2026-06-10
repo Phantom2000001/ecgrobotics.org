@@ -103,17 +103,17 @@ const TeamPage731 = () => {
     };
 
     const teamMembers = [
-        { id: 1, name: "Ishan Mahapatra", role: "Team Captain - Mechanical/Marketing Lead", img: patra, isCaptain: true },
-        { id: 2, name: "Nikunj Gupta", role: "Co-Captain - Programming/Mechanical Lead", img: nikunj },
-        { id: 10, name: "Jason Nguyen", role: "Lead Programming", img: jason },
-        { id: 9, name: "Jimmy Ma", role: "Programming", img: jimmy },
-        { id: 5, name: "Alex Wang", role: "Programming", img: alexw },
+        { id: 2, name: "Nikunj Gupta", role: "Co-Captain", img: nikunj, isCaptain: true },
+        { id: 10, name: "Jason Nguyen", role: "Co-Captain", img: jason, isCaptain: true },
+        { id: 1, name: "Ishan Mahapatra", role: "Marketing", img: patra },
+        { id: 9, name: "Jimmy Ma", role: "Programming Lead", img: jimmy },
+        // { id: 5, name: "Alex Wang", role: "Programming", img: alexw },
         { id: 3, name: "Teja Chitta", role: "Mechanical", img: teja },
-        { id: 4, name: "Alex Chen", role: "Mechanical", img: alexc },
-        { id: 6, name: "Anika Nayanar", role: "Marketing/Programming", img: anika },
-        { id: 7, name: "Noah King", role: "Marketing", img: noah },
-        { id: 8, name: "Dev Patel", role: "Mechanical/Outreach", img: dev },
-        { id: 11, name: "Divit Rao", role: "Marketing", img: divit },
+        // { id: 4, name: "Alex Chen", role: "Mechanical", img: alexc },
+        { id: 6, name: "Anika Nayanar", role: "Marketing Lead", img: anika },
+        { id: 7, name: "Noah King", role: "Marketing/Mechanical", img: noah },
+        { id: 8, name: "Dev Patel", role: "Mechanical/Mechanical", img: dev },
+        { id: 11, name: "Divit Rao", role: "Marketing/Mechanical", img: divit },
         {id: 12, name: "Joel Sekyama", role: "Programming", img: joel },
         {id: 13, name: "Aiden Bell", role: "Mechanical", img: aiden },
         {id: 14, name: "Luna Smith Yanez", role: "Marketing/Outreach", img: luna },
@@ -263,7 +263,7 @@ const TeamPage731 = () => {
                 <section className="team731-section team731-overview">
                     <h2>Overview</h2>
                     <p>
-                    FTC Team 731 Wannabee Strange is a 22-year veteran team based in Greensboro, NC. We are one of four FTC teams in the ECG Robotics Organization, with 14 members from across the Triad area. We actively uphold our team values of innovation (being 'strange') and teamwork (Bees of a colony). <br />
+                    FTC Team 731 Wannabee Strange is a 19-year veteran team based in Greensboro, NC. We are one of four FTC teams in the ECG Robotics Organization, with 14 members from across the Triad area. We actively uphold our team values of innovation (being 'strange') and teamwork (Bees of a colony). <br />
                     Wannabee Strange is entirely student-led, with captains and division leads managing finances, logistics, bot duties, tasks, projects, and goals. This structure helps members develop valuable skills beyond robotics, including communication and productivity.
                     </p>
                 </section>
@@ -354,7 +354,7 @@ const TeamPage731 = () => {
                     </div>
                 </section>
 
-                {/* Sponsors Section */}
+                {/* Sponsors Section
                 <section className="team731-section team731-sponsors">
                     <h2>Our Sponsors</h2>
                     <div className="team731-sponsors-grid">
@@ -371,7 +371,7 @@ const TeamPage731 = () => {
                             </div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
                 {/* Outreach Section */}
                 <section className="team731-section team731-outreach">
