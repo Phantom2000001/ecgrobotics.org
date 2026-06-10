@@ -481,7 +481,7 @@ export function startLogoAnimation(canvas) {
         {
             for(var j = 0; j < i; j++)
             {
-                if (DistM.getEntry(i, j) <= 250)
+                if (DistM.getEntry(i, j) <= Math.pow(50, 2))
                 {
                     const x_1 = points2[i].getComp(0) * scale + offsetMult*centerX/Math.PI;
                     const y_1 = points2[i].getComp(1) * -scale + centerY/1;
